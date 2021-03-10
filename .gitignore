@@ -1,0 +1,10 @@
+**/.DS_Store
+**/*.ipynb_checkpoints/
+**/__pycache__
+**/.vscode
+images/client_xrays
+notebooks/old
+diagnosis_PDFs
+data
+.env
+setup.sh
