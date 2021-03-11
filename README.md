@@ -62,7 +62,3 @@ During the project, I have used the following libraries:
 - [dotenv](https://pypi.org/project/python-dotenv/)
 - [regex](https://docs.python.org/3/library/re.html)
 - [progressbar]()
-
-## Links & Resources
-
-```- [Name of link](url)

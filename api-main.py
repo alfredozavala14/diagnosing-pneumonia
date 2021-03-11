@@ -17,10 +17,18 @@ or "png" format and receive your diagnosis!
 """
 )
 
+# defining fields
+fields = ["full_name", "email" , "uploaded_file"]
+completed_fields = {k: None for k in fields}
+error_placeholders = dict()
+
 # Insert patient's full name
 full_name = st.text_input('Full Name')
 if full_name:
     st.write('Hello ', full_name)
+    completed_fields["full_name"] = full_name
+else:
+    error_placeholders["full_name"] = st.empty()
 
 # Insert patient's email
 email = st.text_input('Email')
@@ -28,6 +36,9 @@ if email and check_email(email) is False:
     st.error("Invalid email format")
 elif email:
     st.write('Valid email')
+    completed_fields["email"] = email
+else:
+    error_placeholders["email"] = st.empty()
 
 # Insert x-ray date
 d = st.date_input(
@@ -43,20 +54,31 @@ if uploaded_file:
     st.write('File successfully uploaded')
     img = Image.open(uploaded_file)
     st.image(img)
+    completed_fields["uploaded_file"] = uploaded_file
+else:
+    error_placeholders["uploaded_file"] = st.empty()
 
 # submit button
 if st.button('Submit'):
-    img_path = f"images/client_xrays/{full_name} xray - {d}.jpeg"
-    img = img.save(img_path)
-    create_PDF(
-        patient_name = full_name,
-        patient_email = email,
-        xray_date = d,
-        xray_path = img_path
-    )
-    send_diagnosis_mail(
-        patient_name = full_name,
-        patient_email = email
-    )
-    st.write('Diagnosis complete. Check your email for your results.')
+    all_fields_completed_error = False
+    for key in fields:
+        if not completed_fields.get(key):
+            if error_placeholders.get(key):
+                error_placeholders[key].error("Compulsory field")
+            all_fields_completed_error = True
+    
+    if not all_fields_completed_error:
+        img_path = f"images/client_xrays/{full_name} xray - {d}.jpeg"
+        img = img.save(img_path)
+        create_PDF(
+            patient_name = full_name,
+            patient_email = email,
+            xray_date = d,
+            xray_path = img_path
+        )
+        send_diagnosis_mail(
+            patient_name = full_name,
+            patient_email = email
+        )
+        st.write('Diagnosis complete. Check your email for your results.')
 
