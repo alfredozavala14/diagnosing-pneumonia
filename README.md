@@ -9,7 +9,7 @@ As the data analytics Ironhack bootcamp comes to an end, we are faced with the t
 
 As a starting point for this project, I have used a [kaggle dataset](https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia) containing almost 6,000 X-Ray images (JPEG) divided into 2 categories (Pneumonia/Normal). This is a summary of the downloaded images:
 
-[Dowloaded data]("images/train-cases-downloaded-from-kaggle.png")
+![Dowloaded data](images/train-cases-downloaded-from-kaggle.png)
 
 ## Work done
 
@@ -20,7 +20,7 @@ As the backbone of the project, I have trained three convolutional networks. To 
     
 These are the accuracy, loss, precision and recall results:
 
-[cnn summary results]("images/cnn-results-summary.png")
+![cnn summary results](images/cnn-results-summary.png)
 
 Once I had a relatively robust CNN, I was able to develop a diagnosis function and then work on improving the customer experience:
     - I created an APP using Streamlit so that users could upload their personal info and x-rays
