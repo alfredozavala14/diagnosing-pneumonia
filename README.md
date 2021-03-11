@@ -14,18 +14,18 @@ As a starting point for this project, I have used a [kaggle dataset](https://www
 ## Work done
 
 As the backbone of the project, I have trained three convolutional networks. To assess each one, I used accuracy as a validation metric to train the model, but then looked at precision and recall as well.
-    - The first one was a simple convnet with the data dowloaded from Kaggle used directly (with minimal treatment to make it feedable to the network.
-    - The second iteration included data augmentation techniques to create more "normal" images and also included dropout.
-    - For the third try, seeing that the second iteration showed no improvement, I didn't use dropout so I could see if data augmentation alone made a better convnet.
+- The first one was a simple convnet with the data dowloaded from Kaggle used directly (with minimal treatment to make it feedable to the network.
+- The second iteration included data augmentation techniques to create more "normal" images and also included dropout.
+- For the third try, seeing that the second iteration showed no improvement, I didn't use dropout so I could see if data augmentation alone made a better convnet.
     
 These are the accuracy, loss, precision and recall results:
 
 ![cnn summary results](images/cnn-results-summary.png)
 
 Once I had a relatively robust CNN, I was able to develop a diagnosis function and then work on improving the customer experience:
-    - I created an APP using Streamlit so that users could upload their personal info and x-rays
-    - I used FPDF to automate the creation of diagnosis reports
-    - I used smtplib to automate sending an email to each client with the results of the diagnosis
+- I created an APP using Streamlit so that users could upload their personal info and x-rays
+- I used FPDF to automate the creation of diagnosis reports
+- I used smtplib to automate sending an email to each client with the results of the diagnosis
 
 ## Deliverables
 
